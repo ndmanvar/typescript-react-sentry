@@ -17,20 +17,7 @@
         <!-- Configure SDK -->
         <script>
             Raven.config('https://9b6afd966c0d4f86ad236af8e7023081@sentry.io/1255106', {
-                release: "1",
-                dataCallback: function (data) {
-                    var stacktrace = data.exception.values && data.exception.values[0].stacktrace;
-
-                    if (stacktrace && stacktrace.frames) {
-                        stacktrace.frames.forEach(function (frame) {
-                            if (frame.filename.startsWith('/')) {
-                                frame.filename = "app:///" + path.relative(root, frame.filename);
-                            }
-                        });
-                    }
-
-                    return data;
-                }
+                release: "1"
             }).install();
         </script>
 
